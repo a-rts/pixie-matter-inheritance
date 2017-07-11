@@ -1,0 +1,9 @@
+{
+  "name": "GameWork",
+  "version": "0.0.1",
+  "description": "Personal Game Framework",
+  "main": "index.js",
+  "repository": "https://github.com/a-rts/gamework.git",
+  "author": "a-rts",
+  "license": "MIT"
+}
