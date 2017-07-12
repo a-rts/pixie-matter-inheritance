@@ -1,15 +1,17 @@
+let id = 0; // TODO: ID counter global to entities that never decrements
+
 class Entity {
-  static create(array,x,y,w,h,a,s) { // TODO: objects are passed by reference?
-    let entity = new Entity(array,x,y,w,h,a,s);
-    array.push(entity);
+  // TODO: create() should be on top level classes? Or top level classes should do Entity.create() and then change it?
+  static create(entities, x,y,w,h,a,s) {
+    let entity = new Entity(x,y,w,h,a,s);
+    entities.push(entity);
   }
 
-  constructor() {
+  constructor(x,y,w,h,a,s) {
     // x y w h... common
     // a-lpha... sprite
     // s-tatic... body
-    entities.push(this);
-    this.id = entities.length;
+    this.id = id++;
   }
 
   add() {
@@ -18,15 +20,6 @@ class Entity {
 
   remove() {
     // stage and world
-  }
-
-  show() {
-    // sprite and/or body
-  }
-
-  hide() {
-    // sprite and/or body
-    // if body is hidden, sprite is static?
   }
 
   move() {
