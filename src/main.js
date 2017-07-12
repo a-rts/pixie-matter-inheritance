@@ -14,20 +14,29 @@ const config = {
 };
 
 const game = playground({
-  // STATE: STATE,
+  STATE: STATE,
   util: util,
 
   preload: function() {
     this.engine = Matter.Engine.create();
+
     PIXI.utils.skipHello();
     this.renderer = PIXI.autoDetectRenderer(config.width, config.height, {
-      resolution: window.devicePixelRatio,
+      resolution: window.devicePixelRatio || 1,
       antialias: true,
-      backgroundColor: 0x1099bb
+      backgroundColor: 0x555555
     });
     this.stage = new PIXI.Container();
+
     document.body.style.margin = 0;
     document.body.appendChild(this.renderer.view);
+    // Center the canvas in the window
+    Object.assign(this.renderer.view.style, {
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)'
+    })
 
     setup.preload(this);
   },
@@ -72,6 +81,8 @@ const game = playground({
 
   render: function(dt) {
     // Main game render loop
+    this.renderer.render(this.stage);
+    // requestAnimationFrame(this.render);
   }
 
 });
