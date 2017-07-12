@@ -1,10 +1,10 @@
 let setup = {
-  preload: function(app) {
+  preload: function() {
     //
   },
 
-  create: function(app) {
-    //
+  create: function() {
+    this.app.entities = []; // TODO: entities needs to be global in the app
   }
 }
 

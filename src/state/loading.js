@@ -1,4 +1,4 @@
-let loading = {
+let Loading = {
   create: function() {
     //
   },
@@ -12,7 +12,7 @@ let loading = {
   },
 
   step: function(dt) {
-    console.log('loading step');
+    console.log('Loading step');
   },
 
   render: function(dt) {
@@ -20,4 +20,4 @@ let loading = {
   }
 };
 
-export default loading;
+export default Loading;

@@ -1,4 +1,4 @@
-let game = {
+let Game = {
   create: function() {
     // First enter
   },
@@ -12,7 +12,7 @@ let game = {
   },
 
   step: function(dt) {
-    console.log('game step');
+    console.log('Game step');
   },
 
   render: function(dt) {
@@ -20,4 +20,4 @@ let game = {
   }
 }
 
-export default game;
+export default Game;

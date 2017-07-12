@@ -1,9 +1,9 @@
-import game from './game';
-import loading from './loading';
+import Game from './game';
+import Loading from './loading';
 
 let STATE = {
-  Game: game,
-  Loading: loading
+  Game: Game,
+  Loading: Loading
 };
 
 export default STATE;
