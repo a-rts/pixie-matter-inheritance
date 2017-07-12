@@ -1,10 +1,12 @@
-let setup = {
-  preload: function() {
+
+
+const setup = {
+  preload: function(game) {
     //
   },
 
-  create: function() {
-    this.app.entities = []; // TODO: entities needs to be global in the app
+  create: function(game) {
+    // game.entities.push('TESTENTITY');
   }
 }
 

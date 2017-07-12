@@ -1,4 +1,4 @@
-# GameWork
+# Gamework
 **Libraries:**  
 - Playground.js
 - Pixi.js

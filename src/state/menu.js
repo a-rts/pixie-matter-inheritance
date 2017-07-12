@@ -1,6 +1,6 @@
-class Loading {
+class Menu { // Temporary
   create() {
-    //
+    // First enter
   }
 
   enter() {
@@ -12,12 +12,12 @@ class Loading {
   }
 
   step(dt) {
-    console.log('Loading step');
+    console.log('Menu step');
   }
 
   render(dt) {
     //
   }
-};
+}
 
-export default Loading;
+export default Menu;

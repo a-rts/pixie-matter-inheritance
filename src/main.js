@@ -1,22 +1,53 @@
 import playground from './lib/playground-base.js' // Base framework
-import Matter from 'matter-js'; // Physics
-import PIXI from 'pixi.js'; // Rendering
+import * as Matter from 'matter-js'; // Physics
+import * as PIXI from 'pixi.js'; // Rendering
 
 import STATE from './state'; // Game states
 import util from './util'; // Utility functions
 import setup from './setup'; // Game setup
-import Player from './player';
+import Player from './entity/player';
 
-var app = playground({
-  preload: setup.preload(this),
-  create: setup.create(this),
+// Temporary game settings
+const config = {
+  width: 250,
+  height: 125
+};
+
+const game = playground({
+  // STATE: STATE,
+  util: util,
+
+  preload: function() {
+    this.engine = Matter.Engine.create();
+    PIXI.utils.skipHello();
+    this.renderer = PIXI.autoDetectRenderer(config.width, config.height, {
+      resolution: window.devicePixelRatio,
+      antialias: true,
+      backgroundColor: 0x1099bb
+    });
+    this.stage = new PIXI.Container();
+    document.body.style.margin = 0;
+    document.body.appendChild(this.renderer.view);
+
+    setup.preload(this);
+  },
+
+  create: function() { // Loading screen
+    this.setState(STATE.Menu);
+    this.ui = [] // User interface objects
+    this.entities = []; // Game objects
+    setup.create(this);
+  },
 
   ready: function() {
-    // After main loader - set state here, access app from state with this.app
-    // console.log('ready');
+    // After main loader - set state here, access game from within state with this.game
+    // TODO: Add all entity bodies to the world
+    // Matter.World.add(this.engine.world, this.entities);
+    Matter.Engine.run(this.engine);
     this.setState(STATE.Game);
     // Persistent state = {}
     // Temporary state = class
+    // console.log(game.entities);
   },
 
   createstate: function() {
@@ -36,11 +67,11 @@ var app = playground({
   },
 
   step: function(dt) {
-    // Main app logic loop
+    // Main game logic loop
   },
 
   render: function(dt) {
-    // Main app render loop
+    // Main game render loop
   }
 
 });

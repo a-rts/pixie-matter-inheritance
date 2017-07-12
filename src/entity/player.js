@@ -1,8 +1,8 @@
-import Entity from './base';
+import Entity from './entity';
 
 class Player extends Entity {
   constructor() {
-    //
+    super();
   }
 }
 

@@ -1,4 +1,4 @@
-let Game = {
+const Game = { // Persistent
   create: function() {
     // First enter
   },
