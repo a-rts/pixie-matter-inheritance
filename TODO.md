@@ -3,3 +3,7 @@ Convert sprites to bodies (convex hull):
 - http://www.qhull.org/
 - https://github.com/AndriiHeonia/hull
 - https://www.npmjs.com/package/convex-hull
+
+Slow motion (critical hit):
+- https://codepen.io/liabru/pen/jwXqOd?editors=0010
+- https://codepen.io/liabru/pen/Eamgq
