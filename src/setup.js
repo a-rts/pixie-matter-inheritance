@@ -1,5 +1,11 @@
-var setup = {
-  test: 'This is a test variable'
+let setup = {
+  preload: function(app) {
+    //
+  },
+
+  create: function(app) {
+    //
+  }
 }
 
 export default setup;
