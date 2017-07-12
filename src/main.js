@@ -43,8 +43,10 @@ const game = playground({
 
   create: function() { // Loading screen
     this.setState(STATE.Menu);
-    this.ui = [] // User interface objects
-    this.entities = []; // Game objects
+    this.ui = new Map(); // User interface objects
+    this.entities = new Map(); // Game objects
+    // The number of entities that have ever existed is used for entity IDs
+    this.entities.set('counter', 0);
     setup.create(this);
   },
 
@@ -80,9 +82,7 @@ const game = playground({
   },
 
   render: function(dt) {
-    // Main game render loop
     this.renderer.render(this.stage);
-    // requestAnimationFrame(this.render);
   }
 
 });

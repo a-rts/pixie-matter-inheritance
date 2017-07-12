@@ -1,17 +1,12 @@
-let id = 0; // TODO: ID counter global to entities that never decrements
-
 class Entity {
-  // TODO: create() should be on top level classes? Or top level classes should do Entity.create() and then change it?
-  static create(entities, x,y,w,h,a,s) {
-    let entity = new Entity(x,y,w,h,a,s);
-    entities.push(entity);
-  }
-
-  constructor(x,y,w,h,a,s) {
+  constructor(map, x, y, w, h, {alpha=1, isStatic=false} = {}) {
     // x y w h... common
     // a-lpha... sprite
     // s-tatic... body
-    this.id = id++;
+    console.log(arguments[0]); // TODO: not under arguments
+    let counter = map.get('counter'); // TODO: this.counter?
+    this.id = counter++;
+    map.set('counter', counter);
   }
 
   add() {
@@ -20,6 +15,15 @@ class Entity {
 
   remove() {
     // stage and world
+  }
+
+  show() {
+    // sprite and/or body
+  }
+
+  hide() {
+    // sprite and/or body
+    // if body is hidden, sprite is static?
   }
 
   move() {
