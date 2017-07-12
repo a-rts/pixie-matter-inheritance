@@ -8,6 +8,9 @@ Slow motion (critical hit):
 - https://codepen.io/liabru/pen/jwXqOd?editors=0010
 - https://codepen.io/liabru/pen/Eamgq
 
+World design:
+- https://github.com/wagerfield/parallax
+
 Possible entity design ideas:
 - https://codepen.io/soulwire/pen/KLrBz / https://soulwire.co.uk/muscular-hydrostats/
 
