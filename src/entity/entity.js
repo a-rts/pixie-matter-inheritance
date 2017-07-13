@@ -2,7 +2,7 @@ import * as Matter from 'matter-js';
 import * as PIXI from 'pixi.js';
 
 class Entity {
-  constructor(map, x, y, w, h, options) {
+  constructor(map, x, y, w, h, options = {}) {
     // TODO: Split optional arguments into renderOptions/spriteOptions and bodyOptions?
     // displayOptions shape/polygon/vertices, etc.
     // alpha... sprite
@@ -11,11 +11,11 @@ class Entity {
     this.map = map;
     this.id = map.nextId();
     this.createBody(x, y, w, h);
-    this.createDisplay(x, y, w, h);
+    this.createDisplay(x, y, w, h, options.displayOptions);
   }
 
   add() {
-    this.map.add(this.id, this);
+    this.map.set(this.id, this);
   }
 
   remove() {
@@ -32,24 +32,53 @@ class Entity {
   }
 
   move() {
-    // both
+    this.display.position = this.body.position;
+    this.display.rotation = this.body.angle;
   }
 
-  createDisplay(x, y, w, h, options) {
+  stop() {
+    // stop body
+  }
+
+  createDisplay(x, y, w, h, {image = false, shape = false, color = false} = {}) {
     // use a utility to generate textures from graphics
     // set anchor
-    let graphics = new PIXI.Graphics()
-    graphics.lineStyle(1, 0xeeeeee);
-    graphics.beginFill(0x1099bb);
-    graphics.drawRect(x, y, w, h);
-    graphics.pivot.x = w / 2;
-    graphics.pivot.y = h / 2;
-    
-    this.display = graphics;
+
+    if (image) {
+      var texture = PIXI.Texture.fromImage(image);
+    }
+
+    if (shape) {
+      let graphics = new PIXI.Graphics();
+      graphics.lineStyle(1, 0xeeeeee);
+      graphics.beginFill(color);
+      switch (shape) {
+        case 'rect':
+          graphics.drawRect(x, y, w, h);
+        break;
+        case 'circle':
+          //
+        break;
+        case 'ellipse':
+          //
+        break;
+        case 'polygon':
+          //
+        break;
+      }
+      var texture = graphics.generateCanvasTexture(1, window.devicePixelRatio);
+    }
+
+    var sprite = new PIXI.Sprite(texture);
+    sprite.anchor.set(0.5);
+    sprite.position.set(x, y);
+
+    this.display = sprite;
   }
 
   createBody(x, y, w, h, options = {}) {
     this.body = Matter.Bodies.rectangle(x, y, w, h, options);
+    this.body.angle = 0.03; // TODO: for testing
   }
 }
 

@@ -8,11 +8,11 @@ import Entity from './entity';
 * TODO: Refine/rewrite the class description
 */
 class Player extends Entity {
-  static create(map, x, y, w, h, options) {
-    let entity = new Player(...arguments); // Reflect.construct(Player, arguments);
-    // map.set('player', entity);
-    // TODO: Do I need Player.create()?
-  }
+  // static create(map, x, y, w, h, options) {
+  //   let entity = new Player(...arguments); // Reflect.construct(Player, arguments);
+  //   // map.set('player', entity);
+  //   // TODO: Do I need Player.create()?
+  // }
 
   constructor(map, x, y, w, h, options) {
     // TODO: Set Player defaults for {bodyOptions: {}, displayOptions: {}}.
@@ -23,7 +23,6 @@ class Player extends Entity {
   }
 
   add() {
-    // TODO: Other entity classes should use this.id instead of a custom map key
     this.map.set('player', this);
   }
 

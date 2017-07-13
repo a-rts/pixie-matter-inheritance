@@ -1,3 +1,5 @@
+import * as Matter from 'matter-js';
+
 const Game = { // Persistent
   create: function() {
     // First enter
@@ -18,16 +20,11 @@ const Game = { // Persistent
   render: function(dt) {
     console.log('Game render step');
 
-    // let i = this.app.entities.size;
-    // while (i--) {
-    //
-    // }
+    Matter.Engine.update(this.app.engine);
 
-    for (let entity in this.app.entities) {
-      // TODO: Make them move!
-      entity.display.position = entity.body.position;
-      entity.display.rotation = entity.body.angle;
-    }
+    this.app.entities.forEach(function(entity) {
+      entity.move();
+    })
 
     this.app.renderer.render(this.app.stage);
   }

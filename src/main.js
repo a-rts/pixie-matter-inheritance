@@ -6,6 +6,7 @@ import STATE from './state'; // Game states
 import util from './util'; // Utility functions
 import setup from './setup'; // Game setup
 import Player from './entity/player';
+import Thing from './entity/thing';
 
 // Temporary game app settings
 const config = {
@@ -24,7 +25,7 @@ const app = playground({
 
     PIXI.utils.skipHello();
     this.renderer = PIXI.autoDetectRenderer(config.width, config.height, {
-      resolution: window.devicePixelRatio || 1,
+      resolution: window.devicePixelRatio,
       antialias: true,
       backgroundColor: 0x555555
     });
@@ -44,7 +45,7 @@ const app = playground({
   },
 
   create: function() { // Loading screen
-    this.setState(STATE.Menu);
+    this.setState(STATE.Loading);
     this.ui = new Map(); // User interface objects
     this.entities = new Map(); // Game objects
     setup.create(this);
@@ -65,13 +66,25 @@ const app = playground({
     //   Matter.World.addBody(this.engine.world, entry.body);
     // }
 
-    Matter.World.addBody(this.engine.world, this.entities.get('player').body);
-    // console.log(this.entities);
+    // TODO: Move game entities to STATE.Game
+    // Matter.World.addBody(this.engine.world, this.entities.get('player').body);
+    // this.entities.forEach(function() {
+    //   //
+    // });
 
-    console.log(this.entities.get('player').display);
+    // TODO: Util function
+    var self = this;
+    this.bodies = [];
+    this.entities.forEach(function(entity) {
+      self.bodies.push(entity.body);
+    });
+    Matter.World.add(this.engine.world, this.bodies);
+
     this.stage.addChild(this.entities.get('player').display);
+    // console.log(this.entities.get('player').display.position);
+    // console.log(this.entities.get('player').display);
 
-    Matter.Engine.run(this.engine);
+    // Matter.Engine.run(this.engine);
     this.setState(STATE.Game);
     // Persistent state = {}
     // Temporary state = class
