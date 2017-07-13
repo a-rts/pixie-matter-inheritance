@@ -14,9 +14,16 @@ World design:
 Possible entity design ideas:
 - https://codepen.io/soulwire/pen/KLrBz / https://soulwire.co.uk/muscular-hydrostats/
 
+UI design ideas:
+- FizzyText https://github.com/dataarts/dat.gui/blob/5a1c06798e43de7036bca480c0b8d025ae1d780d/demo/demo.js
+
 Overall physics implementations:
 - https://codepen.io/tanker837/pen/qaeQKZ
 
-Interactive homepage examples:
+Development tools:
+- https://www.npmjs.com/package/dat.gui
+
+Interactive homepage examples and very good projects:
 - https://soulwire.co.uk
 - http://matthew.wagerfield.com/
+- https://www.epic.net
