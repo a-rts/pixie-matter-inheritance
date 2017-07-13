@@ -1,20 +1,25 @@
+import * as Matter from 'matter-js';
+import * as PIXI from 'pixi.js';
+
 class Entity {
-  constructor(map, x, y, w, h, {alpha=1, isStatic=false} = {}) {
-    // x y w h... common
-    // a-lpha... sprite
-    // s-tatic... body
-    console.log(arguments[0]); // TODO: not under arguments
-    let counter = map.get('counter'); // TODO: this.counter?
-    this.id = counter++;
-    map.set('counter', counter);
+  constructor(map, x, y, w, h, options) {
+    // TODO: Split optional arguments into renderOptions/spriteOptions and bodyOptions?
+    // displayOptions shape/polygon/vertices, etc.
+    // alpha... sprite
+    // static... body
+
+    this.map = map;
+    this.id = map.nextId();
+    this.createBody(x, y, w, h);
+    this.createDisplay(x, y, w, h);
   }
 
   add() {
-    // stage and world
+    this.map.add(this.id, this);
   }
 
   remove() {
-    // stage and world
+    this.map.delete(this.id);
   }
 
   show() {
@@ -30,13 +35,21 @@ class Entity {
     // both
   }
 
-  sprite(texture) {
+  createDisplay(x, y, w, h, options) {
     // use a utility to generate textures from graphics
     // set anchor
+    let graphics = new PIXI.Graphics()
+    graphics.lineStyle(1, 0xeeeeee);
+    graphics.beginFill(0x1099bb);
+    graphics.drawRect(x, y, w, h);
+    graphics.pivot.x = w / 2;
+    graphics.pivot.y = h / 2;
+    
+    this.display = graphics;
   }
 
-  body() {
-    // needs to be a circle even if the sprite texture of a circle is a square image
+  createBody(x, y, w, h, options = {}) {
+    this.body = Matter.Bodies.rectangle(x, y, w, h, options);
   }
 }
 

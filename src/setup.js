@@ -1,17 +1,15 @@
 import Player from './entity/player';
 
 const setup = {
-  preload: function(game) {
+  preload: function(app) {
     //
   },
 
-  create: function(game) {
-    let player = Player.create(
-      game.entities,
-      game.renderer.width / 2,
-      game.renderer.height / 2,
-      20, 20
-    );
+  create: function(app) {
+    let x = app.renderer.width / 4;
+    let y = app.renderer.height / 4;
+    let player = Player.create(app.entities, x, y, 20, 20);
+    // console.log(app.entities);
   }
 }
 
