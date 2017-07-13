@@ -33,6 +33,7 @@ module.exports = {
     ],
     devtool: 'eval',
     devServer: {
+      port: process.env.PORT || 8080,
       contentBase: path.join(__dirname, 'dist'),
       watchOptions: {
         poll: true
