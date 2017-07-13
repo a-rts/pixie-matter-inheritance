@@ -17,6 +17,9 @@ Possible entity design ideas:
 Overall physics implementations:
 - https://codepen.io/tanker837/pen/qaeQKZ
 
+Development tools:
+- https://www.npmjs.com/package/dat.gui
+
 Interactive homepage examples:
 - https://soulwire.co.uk
 - http://matthew.wagerfield.com/
