@@ -23,6 +23,7 @@ Overall physics implementations:
 Development tools:
 - https://www.npmjs.com/package/dat.gui
 
-Interactive homepage examples:
+Interactive homepage examples and very good projects:
 - https://soulwire.co.uk
 - http://matthew.wagerfield.com/
+- https://www.epic.net
