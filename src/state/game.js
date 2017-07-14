@@ -2,15 +2,17 @@ import * as Matter from 'matter-js';
 
 const Game = { // Persistent
   create: function() {
-    // First enter
+    // Enter the game state for the first time
+    // TODO: Load game save data before adding everything
+    this.app.util.addAll();
   },
 
   enter: function() {
-    //
+    // Resume game
   },
 
   leave: function() {
-    //
+    // Pause game
   },
 
   step: function(dt) {
@@ -20,14 +22,9 @@ const Game = { // Persistent
   render: function(dt) {
     console.log('Game render step');
 
-
     this.app.entities.forEach(function(entity) {
       entity.move();
-      // entity.display.position = entity.body.position;
-      // entity.display.rotation = entity.body.angle;
     })
-
-    // console.log(this.app.entities.get('ground').body.position);
 
     this.app.renderer.render(this.app.stage);
     Matter.Engine.update(this.app.engine);

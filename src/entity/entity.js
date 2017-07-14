@@ -80,7 +80,6 @@ class Entity {
 
   createBody(x, y, w, h, options = {}) {
     // TODO: switch case shape
-    console.log(options);
     this.body = Matter.Bodies.rectangle(x, y, w, h, options);
   }
 }
