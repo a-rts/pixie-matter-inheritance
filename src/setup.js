@@ -1,16 +1,16 @@
 import * as Matter from 'matter-js'; // Physics
 import * as PIXI from 'pixi.js'; // Rendering
 
-import Utilities from './utilities'; // Utility functions
+import World from './world';
 import Player from './entity/player';
 import Thing from './entity/thing';
 
 const setup = {
   preload: function(app) {
     // Use Utilities
-    app.util = new Utilities(app);
     app.util.prototypes(); // Create custom prototypes
-
+    // Create the top level game world class
+    app.world = new World(app);
     // Create the physics engine
     app.engine = Matter.Engine.create();
 
@@ -23,6 +23,7 @@ const setup = {
     });
     app.stage = new PIXI.Container();
 
+    // Add the renderer to the page and adjust its CSS properties
     document.body.style.margin = 0;
     document.body.appendChild(app.renderer.view);
     // Center the renderer.view canvas element in the window
@@ -33,6 +34,7 @@ const setup = {
       transform: 'translate(-50%, -50%)'
     })
 
+    // Create game data objects
     app.ui = new Map(); // User interface objects
     app.entities = new Map(); // Game objects
   },
@@ -47,8 +49,9 @@ const setup = {
     let player = new Player(app.entities, x, y, w, h, {
       key: 'player',
       displayOptions: {
+        shape: 'rect',
         color: 0x1099bb,
-        shape: 'rect'
+        lineStyle: [1, 0x333333]
       }
     });
 
@@ -62,8 +65,9 @@ const setup = {
     let ground = new Thing(app.entities, x, y, w, h, {
       key: 'ground',
       displayOptions: {
+        shape: 'rect',
         color: 0xaaaaaa,
-        shape: 'rect'
+        lineStyle: [1, 0x333333]
       }
     });
   }

@@ -4,7 +4,7 @@ const Game = { // Persistent
   create: function() {
     // Enter the game state for the first time
     // TODO: Load game save data before adding everything
-    this.app.util.addAll();
+    this.app.world.addAll();
   },
 
   enter: function() {
@@ -16,15 +16,13 @@ const Game = { // Persistent
   },
 
   step: function(dt) {
-    // console.log(this.app); // use engine world
+    // console.log(this.app); // use engine world?
   },
 
   render: function(dt) {
     console.log('Game render step');
 
-    this.app.entities.forEach(function(entity) {
-      entity.move();
-    })
+    this.app.world.moveAll();
 
     this.app.renderer.render(this.app.stage);
     Matter.Engine.update(this.app.engine);

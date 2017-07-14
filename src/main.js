@@ -1,12 +1,8 @@
 import playground from './lib/playground-base.js' // Base framework
-import * as Matter from 'matter-js'; // Physics
-import * as PIXI from 'pixi.js'; // Rendering
 
+import utilities from './utilities';
 import STATE from './state'; // Game states
 import setup from './setup'; // Game setup
-import Utilities from './utilities'; // Utility functions
-import Player from './entity/player';
-import Thing from './entity/thing';
 
 // Temporary game app settings
 const config = {
@@ -16,15 +12,16 @@ const config = {
 
 const app = playground({
   STATE: STATE, // Playground gives states a reference to the app in this.app
+  util: utilities,
 
   preload: function() {
     this.config = config; // Add the config to the app
-    setup.preload(this); // Run the preloading function of setup
+    setup.preload(this); // Set up libraries and game data objects
   },
 
-  create: function() { // Loading screen
+  create: function() { // Show loading screen
     this.setState(STATE.Loading); // Load assets and resources
-    setup.create(this); // Create the game
+    setup.create(this); // Create game entities
   },
 
   ready: function() {
@@ -52,7 +49,7 @@ const app = playground({
   },
 
   render: function(dt) {
-    this.renderer.render(this.stage);
+    // this.renderer.render(this.stage); // TODO: is this needed?
   }
 
 });

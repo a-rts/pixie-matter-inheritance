@@ -3,11 +3,6 @@ import * as PIXI from 'pixi.js';
 
 class Entity {
   constructor(map, x, y, w, h, options = {}) {
-    // TODO: Split optional arguments into renderOptions/spriteOptions and bodyOptions?
-    // displayOptions shape/polygon/vertices, etc.
-    // alpha... sprite
-    // static... body
-
     this.map = map;
     this.id = map.nextId(); // TODO: Use this.body.id instead?
     options.key ? this.key = options.key : this.key = this.id;
@@ -42,30 +37,33 @@ class Entity {
     // stop body
   }
 
-  createDisplay(x, y, w, h, {image = false, shape = false, color = false} = {}) {
-    // use a utility to generate textures from graphics
-    // set anchor
-
+  createDisplay(x, y, w, h, {image = false, shape = false, color = false, lineStyle = false} = {}) {
     if (image) {
       var texture = PIXI.Texture.fromImage(image);
     }
 
     if (shape) {
+      // if (lineStyle) x -= lineStyle[0]; // TODO: Need to correct x when border?
+
       let graphics = new PIXI.Graphics();
-      graphics.lineStyle(1, 0xeeeeee);
+      graphics.lineStyle(...lineStyle);
       graphics.beginFill(color);
+
       switch (shape) {
         case 'rect':
           graphics.drawRect(x, y, w, h);
         break;
+
         case 'circle':
-          //
+          throw 'TODO';
         break;
+
         case 'ellipse':
-          //
+          throw 'TODO';
         break;
+
         case 'polygon':
-          //
+          throw 'TODO';
         break;
       }
       var texture = graphics.generateCanvasTexture(1, window.devicePixelRatio);
