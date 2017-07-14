@@ -6,8 +6,8 @@ import setup from './setup'; // Game setup
 
 // Temporary game app settings
 const config = {
-  width: 250,
-  height: 125
+  width: 800,
+  height: 500
 };
 
 const app = playground({
@@ -50,6 +50,10 @@ const app = playground({
 
   render: function(dt) {
     // this.renderer.render(this.stage); // TODO: is this needed?
+  },
+
+  mousemove: function(data) {
+    // console.log(data);
   }
 
 });

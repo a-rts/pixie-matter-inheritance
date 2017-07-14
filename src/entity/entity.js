@@ -30,7 +30,7 @@ class Entity {
 
   move() {
     this.display.position = this.body.position;
-    this.display.rotation = this.body.angle;
+    this.display.rotation = this.body.angle + 0.4;
   }
 
   stop() {
@@ -38,12 +38,11 @@ class Entity {
   }
 
   createDisplay(x, y, w, h, {image = false, shape = false, color = false, lineStyle = false} = {}) {
-    if (image) {
-      var texture = PIXI.Texture.fromImage(image);
-    }
-
     if (shape) {
-      // if (lineStyle) x -= lineStyle[0]; // TODO: Need to correct x when border?
+      if (lineStyle) {
+        w -= lineStyle[0];
+        h -= lineStyle[0];
+      }
 
       let graphics = new PIXI.Graphics();
       graphics.lineStyle(...lineStyle);
@@ -55,7 +54,7 @@ class Entity {
         break;
 
         case 'circle':
-          throw 'TODO';
+          graphics.drawCircle(x, y, w / 2);
         break;
 
         case 'ellipse':
@@ -66,7 +65,11 @@ class Entity {
           throw 'TODO';
         break;
       }
-      var texture = graphics.generateCanvasTexture(1, window.devicePixelRatio);
+      var texture = graphics.generateCanvasTexture(window.devicePixelRatio);
+    }
+
+    if (image) {
+      var texture = PIXI.Texture.fromImage(image);
     }
 
     var sprite = new PIXI.Sprite(texture);

@@ -1,7 +1,6 @@
 import Entity from './entity';
 
 class Thing extends Entity {
-  // constructor(map, x, y, w, h, {options = {bodyOptions: {}, displayOptions: {}}} = {}) {
   constructor(map, x, y, w, h, options) {
     // TODO: Set Player defaults for {bodyOptions: {}, displayOptions: {}}.
     // NOTE: Cannot spread arguments because of default options

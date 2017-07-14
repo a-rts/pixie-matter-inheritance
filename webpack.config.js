@@ -28,7 +28,7 @@ module.exports = {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'GameWork'
+        title: 'Pixie Matter'
       })
     ],
     devtool: 'eval',

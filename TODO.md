@@ -16,6 +16,7 @@ Possible entity design ideas:
 
 UI design ideas:
 - FizzyText https://github.com/dataarts/dat.gui/blob/5a1c06798e43de7036bca480c0b8d025ae1d780d/demo/demo.js
+- http://www.gameuipatterns.com/gameui/
 
 Overall physics implementations:
 - https://codepen.io/tanker837/pen/qaeQKZ
