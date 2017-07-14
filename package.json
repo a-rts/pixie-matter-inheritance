@@ -12,7 +12,6 @@
     "build": "webpack"
   },
   "dependencies": {
-    "dat.gui": "^0.6.1",
     "express": "^4.15.3",
     "matter-js": "^0.13.0",
     "pixi.js": "^4.5.3"
@@ -21,6 +20,7 @@
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
+    "dat.gui": "^0.6.1",
     "html-webpack-plugin": "^2.29.0",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.5.1"

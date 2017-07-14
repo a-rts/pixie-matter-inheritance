@@ -1,7 +1,7 @@
 import * as Matter from 'matter-js'; // Physics
 import * as PIXI from 'pixi.js'; // Rendering
 
-// import GUI from './gui';
+import GUI from './gui';
 import World from './world';
 import Player from './entity/player';
 import Character from './entity/character';
@@ -11,6 +11,8 @@ const setup = {
   preload: function(app) {
     // Use Utilities
     app.util.prototypes(); // Create custom prototypes
+    // Create the GUI instance
+    app.gui = new GUI(app);
     // Create the top level game world class
     app.world = new World(app);
     // Create the physics engine
@@ -50,9 +52,6 @@ const setup = {
 
     // Player
     x = app.renderer.width / 2;
-    console.log(app.stage);
-    console.log(app.renderer.width);
-    console.log(app.renderer.height);
     y = app.renderer.height / 4;
     w = 40;
     h = 40;
@@ -67,10 +66,9 @@ const setup = {
 
     // Ground
     // TODO: Fix renderer resolution, the renderer dimensions are wrong!
-    // x = app.renderer.width / 2;
-    // y = app.renderer.height;
-    x = 50;
-    y = app.renderer.height / 2;
+    x = app.renderer.width / 2;
+    // x = 50;
+    y = app.renderer.height;
     w = app.renderer.width;
     h = 40;
     let ground = new Thing(app.entities, x, y, w, h, {
@@ -94,8 +92,8 @@ const setup = {
       }
     });
 
-    // let shape = new PIXI.Graphics();
-    // shape.
+    // Data GUI
+    app.gui.player();
   }
 }
 

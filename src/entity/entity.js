@@ -30,7 +30,7 @@ class Entity {
 
   move() {
     this.display.position = this.body.position;
-    this.display.rotation = this.body.angle + 0.4;
+    this.display.rotation = this.body.angle;
   }
 
   stop() {
