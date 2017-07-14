@@ -73,22 +73,13 @@ const app = playground({
     // });
 
     // TODO: Util function
-    var self = this;
-    this.bodies = [];
+    let self = this;
     this.entities.forEach(function(entity) {
-      self.bodies.push(entity.body);
-    });
-    Matter.World.add(this.engine.world, this.bodies);
+      Matter.World.add(self.engine.world, entity.body);
+      self.stage.addChild(entity.display);
+    })
 
-    this.stage.addChild(this.entities.get('player').display);
-    // console.log(this.entities.get('player').display.position);
-    // console.log(this.entities.get('player').display);
-
-    // Matter.Engine.run(this.engine);
     this.setState(STATE.Game);
-    // Persistent state = {}
-    // Temporary state = class
-    // console.log(app.entities);
   },
 
   createstate: function() {

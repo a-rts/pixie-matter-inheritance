@@ -20,13 +20,17 @@ const Game = { // Persistent
   render: function(dt) {
     console.log('Game render step');
 
-    Matter.Engine.update(this.app.engine);
 
     this.app.entities.forEach(function(entity) {
       entity.move();
+      // entity.display.position = entity.body.position;
+      // entity.display.rotation = entity.body.angle;
     })
 
+    // console.log(this.app.entities.get('ground').body.position);
+
     this.app.renderer.render(this.app.stage);
+    Matter.Engine.update(this.app.engine);
   }
 }
 

@@ -9,17 +9,19 @@ class Entity {
     // static... body
 
     this.map = map;
-    this.id = map.nextId();
-    this.createBody(x, y, w, h);
+    this.id = map.nextId(); // TODO: Use this.body.id instead?
+    options.key ? this.key = options.key : this.key = this.id;
+
+    this.createBody(x, y, w, h, options.bodyOptions);
     this.createDisplay(x, y, w, h, options.displayOptions);
   }
 
   add() {
-    this.map.set(this.id, this);
+    this.map.set(this.key || this.id, this);
   }
 
   remove() {
-    this.map.delete(this.id);
+    this.map.delete(this.key || this.id);
   }
 
   show() {
@@ -77,8 +79,9 @@ class Entity {
   }
 
   createBody(x, y, w, h, options = {}) {
+    // TODO: switch case shape
+    console.log(options);
     this.body = Matter.Bodies.rectangle(x, y, w, h, options);
-    this.body.angle = 0.03; // TODO: for testing
   }
 }
 
