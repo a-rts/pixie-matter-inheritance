@@ -8,7 +8,7 @@ class World {
   addAll() {
     this.app.entities.forEach((entity) => {
       Matter.World.add(this.app.engine.world, entity.body);
-      if (!this.app.config.debug.bodies) {
+      if (!this.app.config.debug.matterRenderer) {
         this.app.stage.addChild(entity.display);
       }
     })

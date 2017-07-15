@@ -6,6 +6,7 @@ class Entity {
     this.map = map;
     this.id = map.nextId(); // TODO: Use this.body.id instead?
     options.key ? this.key = options.key : this.key = this.id;
+    this.shape = options.shape;
 
     this.createBody(x, y, w, h, options.bodyOptions);
     this.createDisplay(x, y, w, h, options.displayOptions);
@@ -37,8 +38,8 @@ class Entity {
     // stop body
   }
 
-  createDisplay(x, y, w, h, {image = false, shape = false, color = false, lineStyle = false} = {}) {
-    if (shape) {
+  createDisplay(x, y, w, h, {image = false, color = false, lineStyle = false} = {}) {
+    if (this.shape) {
       if (lineStyle) {
         w -= lineStyle[0];
         h -= lineStyle[0];
@@ -48,7 +49,7 @@ class Entity {
       graphics.lineStyle(...lineStyle);
       graphics.beginFill(color);
 
-      switch (shape) {
+      switch (this.shape) {
         case 'rect':
           graphics.drawRect(x, y, w, h);
         break;
@@ -80,8 +81,24 @@ class Entity {
   }
 
   createBody(x, y, w, h, options = {}) {
-    // TODO: switch case shape
-    this.body = Matter.Bodies.rectangle(x, y, w, h, options);
+    // TODO: Shape from vertices
+    switch (this.shape) {
+      case 'rect':
+        this.body = Matter.Bodies.rectangle(x, y, w, h, options);
+        break;
+
+      case 'circle':
+        this.body = Matter.Bodies.circle(x, y, w / 2);
+        break;
+
+      case 'ellipse':
+        throw 'TODO';
+        break;
+
+      case 'polygon':
+        throw 'TODO';
+        break;
+    }
   }
 }
 

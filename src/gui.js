@@ -4,7 +4,7 @@ class GUI {
   constructor(app) {
     // TODO: Add a value to config for enabling and disabling the data GUI
     this.app = app;
-    this.presets = this.getPresets();
+    this.presets = this.getPresets(); // TODO: Use dat.gui presets for the actual game configuration?
     this.dat = new dat.GUI({});
     //   load: this.presets.dat,
     //   preset: 'Default'
@@ -23,10 +23,10 @@ class GUI {
 
   debug() {
     let debug = this.app.config.debug;
-    let folder = this.dat.addFolder('Debug');
+    let folder = this.dat.addFolder('Debug (save and reload)');
     this.dat.remember(debug);
-    folder.add(debug, 'bodies');
-    folder.add(debug, 'wireframes');
+    folder.add(debug, 'matterRenderer');
+    folder.add(debug, 'matterWireframes');
     folder.open();
   }
 

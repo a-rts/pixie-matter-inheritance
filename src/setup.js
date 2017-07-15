@@ -21,7 +21,7 @@ const setup = {
     app.engine = Matter.Engine.create();
 
     PIXI.utils.skipHello();
-    if (app.config.debug.bodies) {
+    if (app.config.debug.matterRenderer) {
       // Create Matter renderer for debugging with physics wireframes
       this.createRendererMatter(app);
     } else {
@@ -51,24 +51,24 @@ const setup = {
     h = 40;
     let player = new Player(app.entities, x, y, w, h, {
       key: 'player',
+      shape: 'rect',
       displayOptions: {
-        shape: 'rect',
         color: 0x1099bb,
         lineStyle: [2, 0xeeeeee]
       }
     });
+    console.log(player);
     app.gui.player(); // Add player variables to the data GUI
 
     // Ground
-    // TODO: Fix renderer resolution, the renderer dimensions are wrong!
     x = app.canvas.width / 2;
     y = app.canvas.height;
     w = app.canvas.width;
     h = 80;
     let ground = new Thing(app.entities, x, y, w, h, {
       key: 'ground',
+      shape: 'rect',
       displayOptions: {
-        shape: 'rect',
         color: 0xaaaaaa,
         lineStyle: [1, 0x333333]
       }
@@ -80,8 +80,8 @@ const setup = {
     w = 40;
     h = 40;
     let character = new Character(app.entities, x, y, w, h, {
+      shape: 'circle',
       displayOptions: {
-        shape: 'rect', // TODO: Build circle entities
         color: 0xa52a2a,
         lineStyle: [2, 0x333333]
       }
@@ -106,7 +106,6 @@ const setup = {
   },
 
   createRendererMatter(app) {
-    // TODO: Creating Matter.Render for debugging with wireframes
     app.renderer = Matter.Render.create({
       element: document.body,
       engine: app.engine,

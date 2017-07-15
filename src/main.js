@@ -9,8 +9,8 @@ const config = {
   // width: 800,
   // height: 500,
   debug: {
-    bodies: false, // Use the Matter renderer instead of Pixi renderer
-    wireframes: true // Show only wireframes in the Matter renderer
+    matterRenderer: false, // Use the Matter renderer instead of Pixi renderer
+    matterWireframes: true // Show only wireframes in the Matter renderer
   }
 };
 
