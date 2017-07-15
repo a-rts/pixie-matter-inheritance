@@ -6,8 +6,12 @@ import setup from './setup'; // Game setup
 
 // Temporary game app settings
 const config = {
-  width: 800,
-  height: 500
+  // width: 800,
+  // height: 500,
+  debug: {
+    bodies: false, // Use the Matter renderer instead of Pixi renderer
+    wireframes: true // Show only wireframes in the Matter renderer
+  }
 };
 
 const app = playground({

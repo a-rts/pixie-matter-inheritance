@@ -22,9 +22,11 @@ const Game = { // Persistent
   render: function(dt) {
     console.log('Game render step');
 
-    this.app.world.moveAll();
+    if (!this.app.config.debug.bodies) {
+      this.app.world.moveAll();
+      this.app.renderer.render(this.app.stage);
+    }
 
-    this.app.renderer.render(this.app.stage);
     Matter.Engine.update(this.app.engine);
   }
 }

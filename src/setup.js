@@ -18,30 +18,22 @@ const setup = {
     // Create the physics engine
     app.engine = Matter.Engine.create();
 
-    // Create the 2D renderer with pixi.js
     PIXI.utils.skipHello();
-    // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST; // Pixelated (also disable antialias)
-    app.renderer = PIXI.autoDetectRenderer(app.config.width, app.config.height, {
-      backgroundColor: 0x555555,
-      autoResize: true,
-      antialias: true,
-      roundPixels: true // Pixel interpolation
-    });
-    // Resize the view/camera to fit the whole viewport
-    app.renderer.resize(window.innerWidth, window.innerHeight);
+    if (app.config.debug.bodies) {
+      // Create Matter renderer for debugging with physics wireframes
+      this.createRendererMatter(app);
+    } else {
+      // Create a PIXI renderer
+      this.createRenderer(app);
+    };
     // Remove margin and padding on the html body
     document.body.style.margin = 0;
     document.body.style.padding = 0;
-    // Center the renderer.view canvas element in the window
-    Object.assign(app.renderer.view.style, {
+    // Center the canvas element in the window
+    Object.assign(app.canvas.style, {
       position: 'absolute',
       display: 'block'
     })
-    // Add the canvas element to the body of the DOM
-    document.body.appendChild(app.renderer.view);
-
-    app.stage = new PIXI.Container();
-
     // Create game data objects
     app.ui = new Map(); // User interface objects
     app.entities = new Map(); // Game objects
@@ -51,8 +43,8 @@ const setup = {
     let x, y, w, h;
 
     // Player
-    x = app.renderer.width / 2;
-    y = app.renderer.height / 4;
+    x = app.canvas.width / 2;
+    y = app.canvas.height / 2;
     w = 40;
     h = 40;
     let player = new Player(app.entities, x, y, w, h, {
@@ -66,11 +58,10 @@ const setup = {
 
     // Ground
     // TODO: Fix renderer resolution, the renderer dimensions are wrong!
-    x = app.renderer.width / 2;
-    // x = 50;
-    y = app.renderer.height;
-    w = app.renderer.width;
-    h = 40;
+    x = app.canvas.width / 2;
+    y = app.canvas.height;
+    w = app.canvas.width;
+    h = 80;
     let ground = new Thing(app.entities, x, y, w, h, {
       key: 'ground',
       displayOptions: {
@@ -81,19 +72,73 @@ const setup = {
     });
 
     // Character
-    x = app.renderer.width / 4 - 10;
-    y = app.renderer.height / 4 - 30;
+    x = app.canvas.width / 2 - 20;
+    y = app.canvas.height / 2 - 80;
     w = 40;
     h = 40;
     let character = new Character(app.entities, x, y, w, h, {
       displayOptions: {
+        shape: 'rect', // TODO: Build circle entities
         color: 0xa52a2a,
-        lineStyle: [1, 0x333333]
+        lineStyle: [2, 0x333333]
       }
     });
 
     // Data GUI
     app.gui.player();
+  },
+
+  createRenderer(app) {
+    // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST; // Pixelated (also disable antialias)
+    app.renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, {
+      backgroundColor: 0x555555,
+      autoResize: true,
+      antialias: true,
+      roundPixels: true // Pixel interpolation
+    });
+    // Resize the view/camera to fit the whole viewport
+    app.renderer.resize(window.innerWidth, window.innerHeight);
+    app.canvas = app.renderer.view;
+    // Add the canvas element to the body of the DOM
+    document.body.appendChild(app.renderer.view);
+
+    app.stage = new PIXI.Container();
+  },
+
+  createRendererMatter(app) {
+    // TODO: Creating Matter.Render for debugging with wireframes
+    app.renderer = Matter.Render.create({
+      element: document.body,
+      engine: app.engine,
+      options: {
+          width: window.innerWidth,
+          height: window.innerHeight,
+          pixelRatio: 1, //window.devicePixelRatio,
+          background: '#fafafa',
+          wireframeBackground: '#222',
+          hasBounds: false,
+          enabled: true,
+          wireframes: app.config.debug.wireframes,
+          showSleeping: true,
+          showDebug: false,
+          showBroadphase: false,
+          showBounds: false,
+          showVelocity: false,
+          showCollisions: false,
+          showSeparations: false,
+          showAxes: false,
+          showPositions: false,
+          showAngleIndicator: false,
+          showIds: false,
+          showShadows: false,
+          showVertexNumbers: false,
+          showConvexHulls: false,
+          showInternalEdges: false,
+          showMousePosition: false
+      }
+    });
+    app.canvas = app.renderer.canvas;
+    Matter.Render.run(app.renderer)
   }
 }
 

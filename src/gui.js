@@ -4,7 +4,7 @@ class GUI {
   constructor(app) {
     this.app = app;
     this.dat = new DAT.GUI();
-    this.dat.domElement.parentNode.style.zIndex = 1;
+    this.dat.domElement.parentNode.style.zIndex = 1; // Bring forward dat.gui
   }
 
   player() {
