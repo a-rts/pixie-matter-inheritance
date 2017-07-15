@@ -66,6 +66,8 @@ class Entity {
           throw 'TODO';
         break;
       }
+      // TODO: Optional graphics line to see rotation
+
       var texture = graphics.generateCanvasTexture(window.devicePixelRatio);
     }
 

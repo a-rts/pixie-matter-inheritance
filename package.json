@@ -1,5 +1,5 @@
 {
-  "name": "GameWork",
+  "name": "pixie-matter",
   "version": "1.0.0",
   "description": "Personal Game Framework",
   "main": "server.js",
@@ -7,11 +7,25 @@
   "author": "a-rts",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "server": "node server.js",
-    "build": "webpack"
+    "postinstall": "npm run build",
+    "start": "node server.js",
+    "build": "better-npm-run build",
+    "build:server": "babel server-es6.js --out-file server.js",
+    "build:client": "NODE_ENV=production webpack -p --config webpack.prod.config.js --progress",
+    "clean": "rimraf dist/* && rimraf server.js"
+  },
+  "betterScripts": {
+    "build": {
+      "command": "npm run build:server && npm run build:client",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
   },
   "dependencies": {
+    "babel-cli": "^6.24.1",
+    "better-npm-run": "^0.0.15",
+    "dat.gui": "^0.6.1",
     "express": "^4.15.3",
     "matter-js": "^0.13.0",
     "pixi.js": "^4.5.3"
@@ -20,9 +34,9 @@
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
-    "dat.gui": "^0.6.1",
     "html-webpack-plugin": "^2.29.0",
     "webpack": "^3.1.0",
+    "webpack-dev-middleware": "^1.11.0",
     "webpack-dev-server": "^2.5.1"
   }
 }

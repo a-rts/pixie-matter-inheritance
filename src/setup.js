@@ -83,7 +83,7 @@ const setup = {
       shape: 'circle',
       displayOptions: {
         color: 0xa52a2a,
-        lineStyle: [2, 0x333333]
+        lineStyle: [2, 0xeeeeee]
       }
     });
   },
