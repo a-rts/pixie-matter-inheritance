@@ -13,6 +13,8 @@ const setup = {
     app.util.prototypes(); // Create custom prototypes
     // Create the GUI instance
     app.gui = new GUI(app);
+    // app.gui.config(); // TODO: No normal configuration options currently
+    app.gui.debug();
     // Create the top level game world class
     app.world = new World(app);
     // Create the physics engine
@@ -33,7 +35,7 @@ const setup = {
     Object.assign(app.canvas.style, {
       position: 'absolute',
       display: 'block'
-    })
+    });
     // Create game data objects
     app.ui = new Map(); // User interface objects
     app.entities = new Map(); // Game objects
@@ -55,6 +57,7 @@ const setup = {
         lineStyle: [2, 0xeeeeee]
       }
     });
+    app.gui.player(); // Add player variables to the data GUI
 
     // Ground
     // TODO: Fix renderer resolution, the renderer dimensions are wrong!
@@ -83,9 +86,6 @@ const setup = {
         lineStyle: [2, 0x333333]
       }
     });
-
-    // Data GUI
-    app.gui.player();
   },
 
   createRenderer(app) {
