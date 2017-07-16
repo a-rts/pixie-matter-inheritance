@@ -8,6 +8,9 @@ Slow motion (critical hit):
 - https://codepen.io/liabru/pen/jwXqOd?editors=0010
 - https://codepen.io/liabru/pen/Eamgq
 
+Lighting:
+- http://ncase.me/sight-and-light/
+
 World design:
 - https://github.com/wagerfield/parallax
 

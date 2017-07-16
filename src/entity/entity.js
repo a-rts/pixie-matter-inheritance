@@ -68,7 +68,7 @@ class Entity {
       }
       // TODO: Optional graphics line to see rotation
 
-      var texture = graphics.generateCanvasTexture(window.devicePixelRatio);
+      var texture = graphics.generateCanvasTexture(2, window.devicePixelRatio);
     }
 
     if (image) {
