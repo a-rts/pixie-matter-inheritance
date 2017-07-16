@@ -90,19 +90,17 @@ const setup = {
 
   createRenderer(app) {
     // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST; // Pixelated (also disable antialias)
-    app.renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, {
+    app.pixi = new PIXI.Application(window.innerWidth, window.innerHeight, {
       backgroundColor: 0x555555,
       autoResize: true,
       antialias: true,
       roundPixels: true // Pixel interpolation
     });
     // Resize the view/camera to fit the whole viewport
-    app.renderer.resize(window.innerWidth, window.innerHeight);
-    app.canvas = app.renderer.view;
+    app.pixi.renderer.resize(window.innerWidth, window.innerHeight);
+    app.canvas = app.pixi.renderer.view;
     // Add the canvas element to the body of the DOM
-    document.body.appendChild(app.renderer.view);
-
-    app.stage = new PIXI.Container();
+    document.body.appendChild(app.pixi.renderer.view);
   },
 
   createRendererMatter(app) {
@@ -137,7 +135,9 @@ const setup = {
       }
     });
     app.canvas = app.renderer.canvas;
-    Matter.Render.run(app.renderer)
+    // TODO: Keep as app.renderer when Pixi is on app.pixi.renderer?
+    // Could use both renderers for debuggin in future and swap them at any time
+    Matter.Render.run(app.renderer);
   }
 }
 
