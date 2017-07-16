@@ -117,7 +117,7 @@ const setup = {
           wireframeBackground: '#222',
           hasBounds: false,
           enabled: true,
-          wireframes: app.config.debug.wireframes,
+          wireframes: app.config.debug.matterWireframes,
           showSleeping: true,
           showDebug: false,
           showBroadphase: false,

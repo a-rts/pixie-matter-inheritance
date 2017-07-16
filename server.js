@@ -54,7 +54,7 @@ if (isDevelopemt) {
 }
 
 app.listen(app.get('port'), function () {
-    console.log('Serving ' + _path2.default.join(DIST_DIR, HTML_FILE) + ' on port ' + app.get('port'));
+    console.log('Serving ' + HTML_FILE + ' on port ' + app.get('port'));
 });
 
 // var express = require('express');
