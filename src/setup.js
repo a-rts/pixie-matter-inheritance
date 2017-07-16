@@ -91,6 +91,7 @@ const setup = {
   createRenderer(app) {
     // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST; // Pixelated (also disable antialias)
     app.pixi = new PIXI.Application(window.innerWidth, window.innerHeight, {
+      forceCanvas: app.config.debug.forceCanvas,
       backgroundColor: 0x555555,
       autoResize: true,
       antialias: true,

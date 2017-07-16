@@ -26,7 +26,6 @@ const Game = { // Persistent
 
     if (!this.app.config.debug.matterRenderer) {
       this.app.world.moveAll();
-    //   this.app.renderer.render(this.app.stage);
     }
   }
 }

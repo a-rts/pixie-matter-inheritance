@@ -25,6 +25,7 @@ class GUI {
     let debug = this.app.config.debug;
     let folder = this.dat.addFolder('Debug (save and reload)');
     this.dat.remember(debug);
+    folder.add(debug, 'forceCanvas');
     folder.add(debug, 'matterRenderer');
     folder.add(debug, 'matterWireframes');
     folder.open();
