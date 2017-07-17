@@ -6,6 +6,7 @@ class Character extends Entity {
     // NOTE: Cannot spread arguments because of default options
     super(map, x, y, w, h, options);
     this.map = map;
+    this.body.category = 'character';
     this.add();
   }
 }

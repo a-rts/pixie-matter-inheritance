@@ -9,6 +9,7 @@ class Thing extends Entity {
     }
     super(map, x, y, w, h, options);
     this.map = map;
+    this.body.category = 'thing';
     this.add();
   }
 }

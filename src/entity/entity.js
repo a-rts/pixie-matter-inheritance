@@ -7,6 +7,11 @@ class Entity {
     this.id = map.nextId(); // TODO: Use this.body.id instead?
     options.key ? this.key = options.key : this.key = this.id;
     this.shape = options.shape;
+    // Set the primary position and dimensions of the entity as properties
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
 
     this.createBody(x, y, w, h, options.bodyOptions);
     this.createDisplay(x, y, w, h, options.displayOptions);
@@ -101,6 +106,7 @@ class Entity {
         throw 'TODO';
         break;
     }
+    this.body.grounded = false;
   }
 }
 

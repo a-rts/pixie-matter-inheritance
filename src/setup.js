@@ -58,6 +58,7 @@ const setup = {
       }
     });
     console.log(player);
+    console.log(player.body.parts);
     app.gui.player(); // Add player variables to the data GUI
 
     // Ground

@@ -60,16 +60,6 @@ const app = playground({
 
   mousemove: function(data) {
     // console.log(data);
-  },
-
-  keydown: function(event) {
-    if (this.keyboard.keys.right) {
-      alert(this.pixi.renderer instanceof PIXI.CanvasRenderer);
-      let body = this.entities.get('player').body;
-      // Matter.Body.setVelocity(body, 0.2);
-      Matter.Body.applyForce(body, body.position, 0.2);
-      console.log(body);
-    }
   }
 
 });
