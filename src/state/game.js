@@ -39,8 +39,7 @@ const Game = { // Persistent
       for (var i = 0; i < pairs.length; i++) {
         let pair = pairs[i];
         if (pair.bodyA === this.player.sensors.ground && pair.bodyB.category == 'character') {
-          console.log('Character collision!');
-          console.log(event);
+          console.log('Ground sensor collided with a character!');
         }
       }
     });
@@ -83,7 +82,6 @@ const Game = { // Persistent
       // TODO: Increase air friction or disable left/right movement while not grounded
       Matter.Body.applyForce(this.player.body, this.player.body.position, {x: 0, y: force});
     }
-    console.log(this.player);
   }
 }
 
