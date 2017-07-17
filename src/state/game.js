@@ -71,7 +71,14 @@ const Game = { // Persistent
     Matter.Engine.update(this.app.engine);
 
     if (!this.app.config.debug.matterRenderer) {
+      let stage = this.app.pixi.stage;
+      let renderer = this.app.pixi.renderer;
+      stage.pivot.x = this.player.display.position.x;
+      stage.pivot.y = this.player.display.position.y;
+      stage.position.x = renderer.width / 2;
+      stage.position.y = (renderer.height / 4) * 3;
       this.app.world.moveAll();
+      this.app
     }
   },
 
