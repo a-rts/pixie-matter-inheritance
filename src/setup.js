@@ -3,9 +3,7 @@ import * as PIXI from 'pixi.js'; // Rendering
 
 import GUI from './gui';
 import World from './world';
-import Player from './entity/player';
-import Character from './entity/character';
-import Thing from './entity/thing';
+
 
 const setup = {
   preload: function(app) {
@@ -42,50 +40,7 @@ const setup = {
   },
 
   create: function(app) {
-    let x, y, w, h;
-
-    // Player
-    x = app.canvas.width / 2;
-    y = app.canvas.height / 2;
-    w = 40;
-    h = 40;
-    let player = new Player(app.entities, x, y, w, h, {
-      key: 'player',
-      shape: 'rect',
-      displayOptions: {
-        color: 0x1099bb,
-        lineStyle: [2, 0xeeeeee]
-      }
-    });
-    console.log(player);
-    app.gui.player(); // Add player variables to the data GUI
-
-    // Ground
-    x = app.canvas.width / 2;
-    y = app.canvas.height;
-    w = app.canvas.width;
-    h = 80;
-    let ground = new Thing(app.entities, x, y, w, h, {
-      key: 'ground',
-      shape: 'rect',
-      displayOptions: {
-        color: 0xaaaaaa,
-        lineStyle: [1, 0x333333]
-      }
-    });
-
-    // Character
-    x = app.canvas.width / 2 - 20;
-    y = app.canvas.height / 2 - 80;
-    w = 40;
-    h = 40;
-    let character = new Character(app.entities, x, y, w, h, {
-      shape: 'circle',
-      displayOptions: {
-        color: 0xa52a2a,
-        lineStyle: [2, 0xeeeeee]
-      }
-    });
+    // TODO: Create function for the entire app
   },
 
   createRenderer(app) {
@@ -98,7 +53,7 @@ const setup = {
       roundPixels: true // Pixel interpolation
     });
     // Resize the view/camera to fit the whole viewport
-    app.pixi.renderer.resize(window.innerWidth, window.innerHeight);
+    // app.pixi.renderer.resize(window.innerWidth, window.innerHeight);
     app.canvas = app.pixi.renderer.view;
     // Add the canvas element to the body of the DOM
     document.body.appendChild(app.pixi.renderer.view);
