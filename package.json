@@ -11,11 +11,12 @@
     "build": "better-npm-run build",
     "build:server": "babel server-es6.js --out-file server.js",
     "build:client": "NODE_ENV=production webpack -p --config webpack.prod.config.js --progress",
-    "clean": "rimraf dist/* && rimraf server.js"
+    "clean": "rimraf dist/* && rimraf server.js",
+    "postinstall": "npm run build"
   },
   "betterScripts": {
     "build": {
-      "command": "npm run build:server && npm run build:client",
+      "command": "npm run clean && npm run build:server && npm run build:client",
       "env": {
         "NODE_ENV": "production"
       }
