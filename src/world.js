@@ -9,7 +9,7 @@ class World {
     this.app.entities.forEach((entity) => {
       Matter.World.add(this.app.engine.world, entity.body);
       if (!this.app.config.debug.matterRenderer) {
-        this.app.pixi.stage.addChild(entity.display);
+        this.app.stage.addChild(entity.display);
       }
     })
   }

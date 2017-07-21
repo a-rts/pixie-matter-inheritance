@@ -34,6 +34,10 @@ const app = playground({
     this.setState(STATE.Game);
   },
 
+  resize: function() {
+    this.renderer.resize(window.innerWidth, window.innerHeight);
+  },
+
   createstate: function() {
     // console.log('create state');
   },

@@ -35,7 +35,7 @@ const Game = { // Persistent
       key: 'ground',
       shape: 'rect',
       displayOptions: {
-        color: 0x4f7942,
+        color: 0xaaaaaa,
         lineStyle: [1, 0x333333]
       }
     });
@@ -123,14 +123,14 @@ const Game = { // Persistent
     Matter.Engine.update(this.app.engine);
 
     if (!this.app.config.debug.matterRenderer) {
-      let stage = this.app.pixi.stage;
-      let renderer = this.app.pixi.renderer;
+      let stage = this.app.stage;
+      let renderer = this.app.renderer;
       stage.pivot.x = player.display.position.x;
       stage.pivot.y = player.display.position.y;
       stage.position.x = renderer.width / 2;
       stage.position.y = (renderer.height / 4) * 3;
       this.app.world.moveAll();
-      this.app
+      renderer.render(stage);
     }
   },
 
