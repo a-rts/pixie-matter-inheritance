@@ -1,8 +1,11 @@
 import * as Matter from 'matter-js';
+import * as MatterAttractors from 'matter-attractors';
+Matter.use('matter-attractors');
 
 import Player from '../entity/player';
 import Character from '../entity/character';
 import Thing from '../entity/thing';
+import Planet from '../entity/planet';
 
 const Game = { // Persistent
   create: function() {
@@ -38,6 +41,15 @@ const Game = { // Persistent
         color: 0xaaaaaa,
         lineStyle: [1, 0x333333]
       }
+    });
+
+    // Planet
+    x = 0;
+    y = 0;
+    w = 800;
+    h = 800;
+    let planet = new Planet(this.app.entities, x, y, w, h, {
+      key: 'planet'
     });
 
     // Character
@@ -120,7 +132,8 @@ const Game = { // Persistent
     console.log('Game render step');
 
     let player = this.app.entities.get('player');
-    Matter.Engine.update(this.app.engine);
+    Matter.Engine.update(this.app.engine); // TODO: Specify DT like in Matter.Runner doc
+    MatterAttractors.Engine.update(this.app.engine)
 
     if (!this.app.config.debug.matterRenderer) {
       let stage = this.app.stage;

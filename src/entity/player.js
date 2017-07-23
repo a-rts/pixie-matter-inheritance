@@ -5,6 +5,7 @@ import Entity from './entity';
 class Player extends Entity {
   constructor(map, x, y, w, h, options) {
     // TODO: Set Player defaults for {bodyOptions: {}, displayOptions: {}}.
+    // TODO: If I want to pass just options.bodyOptions when options.shape is set, does that get merged?
     // NOTE: Cannot spread arguments because of default options
     super(map, x, y, w, h, options);
     this.map = map;

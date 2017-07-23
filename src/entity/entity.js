@@ -1,4 +1,6 @@
 import * as Matter from 'matter-js';
+import * as MatterAttractors from 'matter-attractors';
+Matter.use('matter-attractors');
 import * as PIXI from 'pixi.js';
 
 class Entity {

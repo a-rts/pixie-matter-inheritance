@@ -1960,6 +1960,10 @@ make-dir@^1.0.0:
   dependencies:
     pify "^2.3.0"
 
+matter-attractors@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/matter-attractors/-/matter-attractors-0.1.6.tgz#f87ba132fb6cf1e58f267c6d8ffc590768683989"
+
 matter-js@^0.13.0:
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/matter-js/-/matter-js-0.13.0.tgz#c13025a76288fad813c747498dc445616253b3f5"

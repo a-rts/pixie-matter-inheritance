@@ -14,6 +14,9 @@ Lighting:
 World design:
 - https://github.com/wagerfield/parallax
 
+Graphic design:
+- http://www.gigantic.store/
+
 Possible entity design ideas:
 - https://codepen.io/soulwire/pen/KLrBz / https://soulwire.co.uk/muscular-hydrostats/
 

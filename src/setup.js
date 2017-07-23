@@ -1,4 +1,5 @@
 import * as Matter from 'matter-js'; // Physics
+import * as MatterAttractors from 'matter-attractors';
 import * as PIXI from 'pixi.js'; // Rendering
 
 import GUI from './gui';
@@ -16,7 +17,10 @@ const setup = {
     // Create the top level game world class
     app.world = new World(app);
     // Create the physics engine
+    Matter.use('matter-attractors');
     app.engine = Matter.Engine.create();
+    app.engine.world.gravity.x = 0;
+    app.engine.world.gravity.y = 0;
 
     PIXI.utils.skipHello();
     if (app.config.debug.matterRenderer) {
