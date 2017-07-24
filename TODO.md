@@ -4,6 +4,9 @@ Convert sprites to bodies (convex hull):
 - https://github.com/AndriiHeonia/hull
 - https://www.npmjs.com/package/convex-hull
 
+Game mechanics:
+- https://gamemechanicexplorer.com/
+
 Slow motion (critical hit):
 - https://codepen.io/liabru/pen/jwXqOd?editors=0010
 - https://codepen.io/liabru/pen/Eamgq
