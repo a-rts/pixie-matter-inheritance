@@ -16,6 +16,7 @@ Pathfinding:
 - http://buildnewgames.com/astar/
 - https://codepen.io/AzazelN28/pen/ogeVKj?editors=0010
 - http://www.html5gamedevs.com/topic/21785-path-finding-without-a-grid/
+- Genetic algorithm (learning) https://www.youtube.com/watch?v=bGz7mv2vD6g
 
 World design:
 - https://github.com/wagerfield/parallax
