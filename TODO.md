@@ -11,6 +11,12 @@ Slow motion (critical hit):
 Lighting:
 - http://ncase.me/sight-and-light/
 
+Pathfinding:
+- Can try using the lighting ray casting
+- http://buildnewgames.com/astar/
+- https://codepen.io/AzazelN28/pen/ogeVKj?editors=0010
+- http://www.html5gamedevs.com/topic/21785-path-finding-without-a-grid/
+
 World design:
 - https://github.com/wagerfield/parallax
 
